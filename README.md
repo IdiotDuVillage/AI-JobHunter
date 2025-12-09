@@ -33,12 +33,13 @@ Autonomous agent assisted with AI looking for jobs based on keywords list. It re
 ## 🤖 Usage
 
 Manual launch :
-    ```bash
+   ```bash
     python main.py
-
-Automation (Mac/Linux)
-    ```bash
+   ```
+Automation (Mac/Linux) :
+   ```bash
     0 9,13,19 * * * cd /path/to/JobHunter && venv/bin/python main.py
+   ```
 
 ## 🏗️ Architecture
 1. Scraoer: 'Jobspy' retrieve offers.
