@@ -1,0 +1,18 @@
+#Python
+__pycache__/
+*.py[cod]
+venv/
+.env
+
+#Local datas
+data/*.db
+data/*.html
+data/*.txt
+data/chrome_profile/
+
+#Generated reports
+daily_report.html
+cron.log
+
+#System
+.DS_Store
