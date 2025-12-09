@@ -26,7 +26,7 @@ Autonomous agent based on JobSpy assisted with AI automating Jobs wearches. It r
 
 3. **Configuration**
 - Rename '.env.example' to '.env' and add you Gemini API key
-- Add your proxies in 'data/proxies.txt' (Optional but higly recommanded)
+- Add your proxies in 'data/proxies.txt' (Optional but higly recommended)
 - Add your keywords in 'data/keywords.txt' (One by line).
 
 
