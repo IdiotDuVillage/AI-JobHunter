@@ -1,10 +1,10 @@
 # 🕵️‍♂️ AI Job Hunter Agent
 
-Autonomous agent assisted with AI looking for jobs based on keywords list. It retrieve offers from LinkedIn, Glassdoor, Indeed and filter relevant offers thanks to **Google Gemini** to generate a daily interactive report. 
+Autonomous agent based on JobSpy assisted with AI automating Jobs wearches. It retrieve offers from LinkedIn, Glassdoor, Indeed and filter relevant offers with **Google Gemini** to generate a daily interactive report. 
 
 ## 🚀 Fonctionalities
 
-- **Multi-sources :** Retrieve offers from LinkedIn, Indeed and Glassdoor through `JobSpy`.
+- **Multi-sources :** Retrieve offers from LinkedIn, Indeed and Glassdoor through `JobSpy` (https://github.com/speedyapply/JobSpy).
 - **AI filter (Smart Filtering) :** Use Gemini 2.5 Flash lite to analyze job description and filter the irrelevants offers. 
 - **Local History :** SQLite database to avoid duplicates.
 - **HTML Report:** Clean interface with drop-down description and direct links.
@@ -42,10 +42,10 @@ Automation (Mac/Linux) :
    ```
 
 ## 🏗️ Architecture
-1. Scraoer: 'Jobspy' retrieve offers.
+1. Scraper: 'Jobspy' retrieve offers.
 2. Parser : 'Gemini API' validate semantic relevance.
 3. Storage : 'SQLite' store and delete duplicates.
-4. Reporter : Generate static HTML page
+4. Reporter : Generate interactive HTML page
 
 ## 📄 Licence
 MIT
