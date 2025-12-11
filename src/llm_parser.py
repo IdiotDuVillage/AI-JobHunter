@@ -94,8 +94,9 @@ def filter_jobs_with_gemini(jobs_list, search_keyword):
             return final_jobs
         except exceptions.ResourceExhausted:
             # ERROR 429 : too many requests, changing models
-            print(f"    ⚠️ Current quota exceeded for {model_name} : {e}")
+            print(f"    ⚠️ Current quota exceeded for {model_name}")
             print("Changing model")
+            continue
         except Exception as e:
             print(f"    ⚠️ Gemini technical Error with {model_name}: {e}")
             continue
