@@ -2,6 +2,8 @@
 
 Autonomous agent based on JobSpy assisted with AI automating Jobs wearches. It retrieve offers from LinkedIn, Glassdoor, Indeed and filter relevant offers with **Google Gemini** to generate a daily interactive report. 
 
+⚠️  **Google Gemini** has recently drastically reduced its Requests Per Day for free users, a change of LLM call for this project is being studied.
+
 ## 🚀 Fonctionalities
 
 - **Multi-sources :** Retrieve offers from LinkedIn, Indeed and Glassdoor through `JobSpy` (https://github.com/speedyapply/JobSpy).
