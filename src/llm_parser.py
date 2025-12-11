@@ -16,7 +16,6 @@ MODEL_FALLBACK_LIST = [
     "models/gemini-2.0-flash",
     "models/gemini-2-0-flash-lite",
     "models/gemini-flash-latest",
-    "models/gemlini-flash-lite-latest"
 ]
 
 def get_gemini_response(prompt, model_name):
