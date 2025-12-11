@@ -63,7 +63,7 @@ def filter_jobs_with_gemini(jobs_list, search_keyword):
         except FileNotFoundError:
             print(f"⚠️  Error : {PROMPT_FILE} not found.")
 
-        pormpt = raw_prompt.replace("{{keyword}}", search_keyword)
+        prompt = raw_prompt.replace("{{keyword}}", search_keyword)
         prompt = prompt.replace("{{json_data}}", json.dumps(jobs_to_check, indent=2))
     # --- FALLBACK LOOP ---
     for model_name in MODEL_FALLBACK_LIST:
