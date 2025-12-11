@@ -12,43 +12,33 @@ def load_proxies():
     - user:pass@ip:port (Standard)
     - ip:port:user:pass (Webshare/Raw)
     """
-    if not os.path.exists(PROXY_file):
-        return []
-    
+    if not os.path.exists(PROXY_file): return []
     formatted_proxies = []
 
     with open(PROXY_file, 'r') as f:
         for line in f:
             line = line.strip()
-            if not line or line.startswith("#"):
-                continue
-
-    #Cleaning prefix "http;//" to analyze properly
+            if not line or line.startswith("#"): continue
+            #Cleaning prefix "http;//" to analyze properly
             clean_line = line.replace("http://", "").replace("https://", "")
-
             parts = clean_line.split(':')
-
             #Case 1 = format IP:PORT:USER:PASS 
             if len(parts) == 4:
                 ip, port, user, password = parts
                 #Standardization 
                 new_proxy = f"http://{user}:{password}@{ip}:{port}"
                 formatted_proxies.append(new_proxy)
-
             #Cas2 : Format USER:PASS@IP:PORT 
             elif '@' in clean_line:
                 formatted_proxies.append(f"http://{clean_line}")
-
             #Case 3 : Format IP:PORT 
             elif len(parts) == 2:
-                formatted_proxies.append(f"http://(clean_line)")
-        #Case4 
+                formatted_proxies.append(f"http://(clean_line)") 
             else :
                 formatted_proxies.append(line)
-    
     return [p for p in formatted_proxies if p and len(p) > 5]
 
-def fetch_jobs_jobspy(keyword, site, location="France", num_results=15):
+def fetch_jobs_jobspy(keyword, site, country, num_results=15):
     """
     Get offers with JobSpy with proxy rotation
     """
@@ -58,6 +48,7 @@ def fetch_jobs_jobspy(keyword, site, location="France", num_results=15):
     #Proxy management
     proxies_list = load_proxies()
 
+    country_indeed_param = country 
     country_indeed = 'France' if site == 'indeed' else None
     if proxies_list :
         formatted_proxies = proxies_list
@@ -72,8 +63,8 @@ def fetch_jobs_jobspy(keyword, site, location="France", num_results=15):
             site_name = [site],
             search_term=keyword,
             #LOCALISATION
-            locations=location,
-            country_indeed='France',
+            locations=country,
+            country_indeed=country,
             results_wanted=num_results,
             hours_old=24, #Filterlast 24hrs
             proxies = formatted_proxies,
@@ -83,7 +74,7 @@ def fetch_jobs_jobspy(keyword, site, location="France", num_results=15):
         )
 
         if Jobs.empty:
-            print("   ❌ No jobs found (might be blocked).")
+            print(f"   ❌ No jobs found in {country} (might be blocked).")
             return[]
         
         print(f"   ✅ {len(Jobs)} job offers retrieved.")
@@ -92,9 +83,10 @@ def fetch_jobs_jobspy(keyword, site, location="France", num_results=15):
             if 'site' not in job or not job['site']:
                 job['site']=site
         #Converting Dataframe to dictionary
+            job['country_search'] = country
         return Jobs.to_dict('records')
     
     except Exception as e:
-        print(f"   💀 JobSpy Fatal Error : {e}")
+        print(f"   💀 JobSpy Fatal Error for {site.upper()} ({country}): {e}")
         return []
         
