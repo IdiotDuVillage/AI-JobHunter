@@ -47,6 +47,9 @@ def filter_jobs_with_gemini(jobs_list, search_keyword):
     jobs_to_check = []
     for idx, job in enumerate(jobs_list):
         desc = job.get('description', '')
+
+        if not isinstance(desc, str):
+            desc = ""
         #We cut description to 800 words
         short_desc = desc[:800] + "..." if desc else "No description"
 
