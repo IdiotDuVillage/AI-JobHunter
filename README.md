@@ -72,7 +72,7 @@ Manual launch :
     LOCAL_MODEL="llama3.2" 
    ```
 
-2. **Search criteria** (data/) :
+2. **Search criteria** `data/` :
 - data/keywords.txt : your keywords (1 by line).
    - Tips : Use english for worldwide scope Utilisez l'anglais pour une recherche internationale (ex: Bioinformatics Scientist).
 - data/countries.txt : Les pays ciblés.
@@ -86,8 +86,8 @@ Manual launch :
 
 3. **Prompts** 
 AI-JobHunter uses 2 differents primpts depanding of the model, to optimize results. Feel free to experiment with your owns and share it if you get better results ! 
-- (data/prompt_gemini.txt) : Nuanced Prompt for Gemini models (LLM)
-- (data/prompt_local.txt) : Robotic prompt for local AI (SLM)
+- `data/prompt_gemini.txt` : Nuanced Prompt for Gemini models (LLM)
+- `data/prompt_local.txt` : Robotic prompt for local AI (SLM)
 
 ## 🛡️ Proxies & Anti-Ban (Recommanded)
 
@@ -137,13 +137,13 @@ Add this :
     ```
 ____
 **📂 Structure du projet**
-- (src/scraper.py) : Call JobSpy, with keywords and countries rotation, proxy rotation
+- `src/scraper.py` : Call JobSpy, with keywords and countries rotation, proxy rotation
 
-- (src/llm_parser.py) : Hybrid Brain (Gemini + Ollama). 
+- `src/llm_parser.py` : Hybrid Brain (Gemini + Ollama). 
 
-- (src/reporter.py) : Generate HTML .
+- `src/reporter.py` : Generate HTML .
 
-- (data/job_history.db) : SQLite database (local).
+- `data/job_history.db` : SQLite database (local).
 
 **🛡️ Beware**
 This project uses scraping techniques. Please use it responsibly. The author is not responsible for any IP blocking by the target platforms. Please use proxies if you are making intensive requests.
