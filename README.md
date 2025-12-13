@@ -49,7 +49,7 @@ _______
 If you wish to use Local or Hybrid mode, get the recommended model 
     ```bash
     ollama pull llama3.2 
-
+    ```
    _(For slower computers, replace llama3.2 by qwen2.5:1.5b)_
 
 
@@ -106,9 +106,9 @@ ____
 
 ## ▶️ Usages
 Manual launch of the agent (recommanded for the 1st usage to check if it work) :
-    ```Bash
-    python main.py
-    ```
+   ```Bash
+   python main.py
+   ```
 
 AI-JobHunter will : 
 1. Scan sites with each keywords and countries
