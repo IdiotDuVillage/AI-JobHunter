@@ -2,7 +2,7 @@ import os
 import time
 import random
 from src.scraper import fetch_jobs_jobspy
-from src.llm_parser import filter_jobs_with_gemini
+from src.llm_parser import filter_jobs_with_LM
 from src.storage import JobDataBase
 from src.reporter import generate_report
 from src.notifier import send_notification
@@ -23,8 +23,8 @@ def run_bot():
 
     #Loading countries : 
     if os.path.exists(COUNTRIES_FILE):
-        with open(COUNTRIES_FILE, 'r', encoding='tuf-8') as f:
-            countries = [line.strip() for line in f if line.stirp()]
+        with open(COUNTRIES_FILE, 'r', encoding='utf-8') as f:
+            countries = [line.strip() for line in f if line.strip()]
     else : 
         print("⚠️ No data/countries.txt detected, using default country : France")
         countries = ["France"]     
@@ -36,13 +36,13 @@ def run_bot():
         for keyword in keywords : 
             print(f" 🔎 Fetching with : {keyword}")
             for site in TARGET_SITES:
-                raw_jobs = fetch_jobs_jobspy(keyword, site=site, location=country, num_results=15)
+                raw_jobs = fetch_jobs_jobspy(keyword, site=site, country=country, num_results=15)
                 if not raw_jobs:
                     time.sleep(5)
                     continue
 
                 #2 Filtering with Gemini
-                validated_jobs = filter_jobs_with_gemini(raw_jobs, keyword)
+                validated_jobs = filter_jobs_with_LM(raw_jobs, keyword)
                 print(f"    ✨ {len(validated_jobs)} relevant offers extracted")
 
             #Storage
@@ -65,7 +65,7 @@ def run_bot():
 
     #Retrieving some offers 
 
-    send_notification(total_new)
+    send_notification(total_new, top_jobs=validated_jobs)
 
 if __name__ == "__main__":
     run_bot()

@@ -12,6 +12,17 @@ def load_proxies():
     - user:pass@ip:port (Standard)
     - ip:port:user:pass (Webshare/Raw)
     """
+    if not os.path.exists(PROXY_file):
+        try:
+            with open(PROXY_file, "w", encoding="utf-8") as f:
+                f.write("# Add your proxies her (1 by ligne)\n")
+                f.write("# Format: http://user:password@ip:port\n")
+                f.write("# Example: http://bob:12345@45.67.89.10:8888\n")
+            print(f"ℹ️ {PROXY_file} created. Add your proxies to avoid IP ban.")
+        except Exception:
+            pass
+        return []
+    
     if not os.path.exists(PROXY_file): return []
     formatted_proxies = []
 
@@ -43,7 +54,7 @@ def fetch_jobs_jobspy(keyword, site, country, num_results=15):
     Get offers with JobSpy with proxy rotation
     """
 
-    print(f"🕵️ JobSpy Search with : '{keyword}' located in '{location}' on {site}")
+    print(f"🕵️ JobSpy Search with : '{keyword}' located in '{country}' on {site}")
 
     #Proxy management
     proxies_list = load_proxies()

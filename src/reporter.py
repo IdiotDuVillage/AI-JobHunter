@@ -120,8 +120,8 @@ def generate_report(open_browser=True):
             <div class="top-bar">
                 <h1>🎯 ({len(jobs)}) New jobs !</h1>
                 <div class="view-controls">
-                    <button onclick="setView('list')" id="btn-list" class="active">Liste</button>
-                    <button onclick="setView('grid')" id="btn-grid">Grille</button>
+                    <button onclick="setView('list')" id="btn-list" class="active">List</button>
+                    <button onclick="setView('grid')" id="btn-grid">Grid</button>
                 </div>
             </div>
 

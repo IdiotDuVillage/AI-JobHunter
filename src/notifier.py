@@ -32,7 +32,7 @@ def get_or_create_topic():
 
 
 
-def send_notification(new_count, top_jobs=None):
+def send_notification(new_count, top_jobs):
     """
     Send a push notification with notify.sh
     """
