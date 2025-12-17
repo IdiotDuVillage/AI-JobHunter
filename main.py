@@ -47,8 +47,14 @@ def run_bot():
 
             #Storage
                 if validated_jobs:
-                    count = db.save_jobs(validated_jobs, source=f"{site.capitalize()}/{keyword}")
+                    source_tag = f"{site.capitalize()}/{country}/{keyword}"
+
+                    #Saving in BDD
+                    count = db.save_jobs(validated_jobs, source=source_tag)
                     total_new += count
+
+                    if count > 0 :
+                        New_jobs.append(validated_jobs)
                     print(f"   💾{count} saved offers for {site}.")
 
             time.sleep(random.uniform(3, 7))
