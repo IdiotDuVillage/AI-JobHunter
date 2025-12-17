@@ -18,6 +18,41 @@ Traditional email alerts are full of false positives and polluted by adds and sp
    - 100% Local mode available for confidentiality.
 - 📊 **Complete Reports :** Job description, sorted by date, Duplicates detection, link to apply.
 - 📱 **No mobile configuraiton needed :** Generate a unique Ntfy key for your Phone alerts.
+_______
+## 🛠️ Installation for "Donkey brains" (no wonder you're unemployed...)
+1. **Python installation
+You must have python installed on your computer
+   1 - Go to python.org
+   2 - Download last version
+   3 - **IMPORTANT** : During the installation, tick the "**Add Pyhton to PATH**" 
+
+2. **Launching the app**
+- **On Windows** : double-Click on the **Windows_launcher.bat** file
+- **On MacOS** : double-Click on the **Mac_launcher.command** file.
+   (You might have to right-click -> open the file if it fail )
+
+3. **Use the interface**
+You can configurate your Job-Hunter agent on this web-page :
+1. **Tab "📝 Criteria" :
+- **Keywords : Write here the keywords/job name related to the position you're looking for.
+- **Countries : Write here the contries you're aiming 
+- **Click on Save to validate your choices**
+2. **Tab "⚙️ AI Configuration"**
+- Choose your mode (Hybrid is recommanded)
+- If you have an Google API key, paste-it.
+- Be sure to have Ollama installed if you plain to use Hybrid or Local mode.
+3. **Tab "🚀 Manual Launch" : 
+- Click on **"▶️ Send 🕵️‍♂️ AI Job Hunter on Watch"** to launch the agent
+- You can see the agent work by keeping this window openned 
+- At the end, a button will appear to download your report
+
+⚠️ Note for MacOs users (first launching of the app). If your file won't open, it's a security feature from Apple. Here's how to open it :
+- Open the app "Terminal"
+- Type "chmod +x " (with a space at the end)
+- Slide the "Mac_launcher.command" file in the terminal window.
+- Press "Enter"
+You can now use AI-JobHunter 
+
 
 _______
 
@@ -49,7 +84,7 @@ _______
 If you wish to use Local or Hybrid mode, get the recommended model 
     ```bash
     ollama pull llama3.2 
-    ```
+
    _(For slower computers, replace llama3.2 by qwen2.5:1.5b)_
 
 
@@ -72,7 +107,7 @@ Manual launch :
     LOCAL_MODEL="llama3.2" 
    ```
 
-2. **Search criteria** `data/` :
+2. **Search criteria** (data/) :
 - data/keywords.txt : your keywords (1 by line).
    - Tips : Use english for worldwide scope Utilisez l'anglais pour une recherche internationale (ex: Bioinformatics Scientist).
 - data/countries.txt : Les pays ciblés.
@@ -86,8 +121,8 @@ Manual launch :
 
 3. **Prompts** 
 AI-JobHunter uses 2 differents primpts depanding of the model, to optimize results. Feel free to experiment with your owns and share it if you get better results ! 
-- `data/prompt_gemini.txt` : Nuanced Prompt for Gemini models (LLM)
-- `data/prompt_local.txt` : Robotic prompt for local AI (SLM)
+- (data/prompt_gemini.txt) : Nuanced Prompt for Gemini models (LLM)
+- (data/prompt_local.txt) : Robotic prompt for local AI (SLM)
 
 ## 🛡️ Proxies & Anti-Ban (Recommanded)
 
@@ -97,15 +132,18 @@ To prevent LinkedIn or Indeed from blocking your IP address (Error 429), especia
 2.  Add on proxy by line.
 3.  Supported format : `http://user:password@ip:port` or `ip:port`.
 
+# Simple IP format
+[http://11.22.33.44:8080](http://11.22.33.44:8080)
+
 Tip: Free proxies found on the internet are often slow and already banned. Basic residential proxies can be retrieved by register on sites such as Webshare (10 free), Smartproxy, etc.
 
 ____
 
 ## ▶️ Usages
 Manual launch of the agent (recommanded for the 1st usage to check if it work) :
-   ```Bash
-   python main.py
-   ```
+    ```Bash
+    python main.py
+    ```
 
 AI-JobHunter will : 
 1. Scan sites with each keywords and countries
@@ -134,13 +172,13 @@ Add this :
     ```
 ____
 **📂 Structure du projet**
-- `src/scraper.py` : Call JobSpy, with keywords and countries rotation, proxy rotation
+- (src/scraper.py) : Call JobSpy, with keywords and countries rotation, proxy rotation
 
-- `src/llm_parser.py` : Hybrid Brain (Gemini + Ollama). 
+- (src/llm_parser.py) : Hybrid Brain (Gemini + Ollama). 
 
-- `src/reporter.py` : Generate HTML .
+- (src/reporter.py) : Generate HTML .
 
-- `data/job_history.db` : SQLite database (local).
+- (data/job_history.db) : SQLite database (local).
 
 **🛡️ Beware**
 This project uses scraping techniques. Please use it responsibly. The author is not responsible for any IP blocking by the target platforms. Please use proxies if you are making intensive requests.
