@@ -125,7 +125,7 @@ To prevent LinkedIn or Indeed from blocking your IP address (Error 429), especia
 2.  Add one proxy by line.
 3.  Supported format : `http://user:password@ip:port` or `ip:port`.
 
-_Example of a simple IP format : [http://11.22.33.44:8080](http://11.22.33.44:8080_
+Example of a simple IP format : [http://11.22.33.44:8080](http://11.22.33.44:8080)
 
 _Tip: Free proxies found online are often slow and banned. Residential proxies (Webshare, Smartproxy, etc.) are recommended (they often offers 10 proxies when you connect on their site)._
 
