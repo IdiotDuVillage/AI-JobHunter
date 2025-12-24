@@ -46,10 +46,13 @@ def send_notification(new_count, top_jobs):
     title = f"🎯 {new_count} New opportunities !"
     message = f"Job Hunter has completed his patrol 🫡."
 
-    if top_jobs:
+    if top_jobs and isinstance(top_jobs, list) and len(top_jobs)>0:
         message += "\nTop offers :"
-        for i, job in enumerate(top_jobs[:3]):
-            message += f"\n- {job['title']} ({job['company']})"
+        for job in top_jobs[:new_count]:
+            if isinstance(job, dict):
+                Position = job.get('title', 'Position unknown')
+                Company = job.get('company', 'Company unknown')
+                message += f"\n🔹 {Position} ({Company})"
     
     message += "\n\nOpen Computer to see complete report."
 
@@ -70,4 +73,30 @@ def send_notification(new_count, top_jobs):
 if __name__ == "__main__":
     current_topic = get_or_create_topic()
     print(f"Canal generated: {current_topic}")
-    send_notification(5, [{"title": "Test_job", "company": "Google"}])
+    test_list = [{"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"},
+                 {"title": "Test_job", "company": "Google"}]
+    send_notification(len(test_list), test_list)

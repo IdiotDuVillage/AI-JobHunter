@@ -30,7 +30,7 @@ def run_bot():
         countries = ["France"]     
     db = JobDataBase()
     total_new = 0
-
+    New_jobs = []
     for country in countries:
         print(f"\n🌍 --- DESTINATION : {country.upper()} ---")
         for keyword in keywords : 
@@ -41,11 +41,11 @@ def run_bot():
                     time.sleep(5)
                     continue
 
-                #2 Filtering with Gemini
+                #2 Filtering with LLM/SLM
                 validated_jobs = filter_jobs_with_LM(raw_jobs, keyword)
                 print(f"    ✨ {len(validated_jobs)} relevant offers extracted")
 
-            #Storage
+                #Storage
                 if validated_jobs:
                     source_tag = f"{site.capitalize()}/{country}/{keyword}"
 
@@ -71,7 +71,7 @@ def run_bot():
 
     #Retrieving some offers 
 
-    send_notification(total_new, top_jobs=validated_jobs)
+    send_notification(total_new,  New_jobs)
 
 if __name__ == "__main__":
     run_bot()

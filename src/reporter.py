@@ -135,7 +135,6 @@ def generate_report(open_browser=True):
             if final_url.startswith('/'): final_url = "https://www.linkedin.com" + final_url
             elif not final_url.startswith('http'): final_url = "https://" + final_url
             
-            # Vérif finale anti-bug
             if not ("," in final_url and "http" not in final_url):
                 is_disabled = False
         #Styles based on sources
@@ -153,7 +152,7 @@ def generate_report(open_browser=True):
         
         if raw_desc and len(raw_desc) > 10:
             cleaned_desc = clean_job_description(raw_desc)
-            # On convertit le Markdown en HTML propre
+            #Markdown is converted in HTML
             html_desc = markdown.markdown(cleaned_desc, extensions=['nl2br'])
             
             desc_block = f"""
