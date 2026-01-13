@@ -74,7 +74,7 @@ def fetch_jobs_jobspy(keyword, site, country, num_results=15):
             site_name = [site],
             search_term=keyword,
             #LOCALISATION
-            locations=country,
+            location=country,
             country_indeed=country,
             results_wanted=num_results,
             hours_old=24, #Filterlast 24hrs
